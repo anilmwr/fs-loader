@@ -22,6 +22,7 @@ class FileSystemLoader:
                  sub_directory_count: int = 10, block_size: int = 4096,
                  min_block_count: int = 1, max_block_count: int = 256,
                  directory_prefix='dir') -> None:
+        '''Initialize a FileSystemLoader instance after verifying arguments'''
         # check if mount directory exists
         if os.path.isdir(mount_directory):
             # check if mount directory is writable
@@ -55,6 +56,8 @@ class FileSystemLoader:
         self.current_file_count = 0
 
     def load_fs(self) -> None:
+        '''This method actually performs the directory structure
+        and file creation'''
         # start a daemon thread to display progress
         t = threading.Thread(target=self.display_progress, daemon=True)
         t.start()
@@ -115,6 +118,7 @@ class FileSystemLoader:
         print('\x1b[1K\rCompleted')
 
     def display_progress(self) -> None:
+        '''Displays the progress percentage on the console'''
         progress_percent = 0
         file_count_tobe_created = self.get_file_count_tobe_created()
         print(f'\rFiles created: {self.current_file_count:12d} Completed: '
@@ -131,5 +135,6 @@ class FileSystemLoader:
             time.sleep(1)
 
     def get_file_count_tobe_created(self) -> int:
+        '''Returns the total file count that will be created'''
         return (self.sub_directory_count ** self.sub_directory_depth) \
             * self.file_count_per_directory

@@ -8,6 +8,7 @@ from fsutil.fs_loader import FileSystemLoader
 def main(mount_directory, sub_directory_depth, file_count_per_directory,
          sub_directory_count, directory_prefix, block_size, min_block_count,
          max_block_count):
+    '''This is the main method where actual load_fs method is called'''
     try:
         fs_loader = FileSystemLoader(mount_directory, sub_directory_depth,
                                      file_count_per_directory,
