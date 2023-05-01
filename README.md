@@ -24,9 +24,11 @@ Below are the command line parameters for the script:
 - `--min-block-count`
   - Optional, default=1
   - This is the minimum number of blocks to write to a file
+  - With default block size of 4096 bytes and minimum block count of 1, 4kB data will be written to the file
 - `--max-block-count`
   - Optioal, default=256
   - This is the maximum number of blocks to write to a file
+  - With default block size of 4096 bytes and maximum block count of 256, 1MB data will be written to the file
 
 
 ## Features
